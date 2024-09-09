@@ -25,12 +25,28 @@
 			"default": {
 				"color": {
 					"background": "#ec4899"
+				},
+				"spacing":{
+					"padding": {
+						"top": "50px",
+						"bottom": "50px",
+						"left": "50px",
+						"right": "50px"
+					}
 				}
 			}
 		},
 		"enableTopCurve": {
 			"type": "boolean",
 			"default": true
+		},
+		"topWidth":{
+			"type": "number",
+			"default": 100
+		},
+		"topHeight":{
+			"type": "number",
+			"default": 100
 		}
 	},
 	"textdomain": "omega",

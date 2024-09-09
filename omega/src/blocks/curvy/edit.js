@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, HorizontalRule, RangeControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -40,7 +40,12 @@ export default function Edit(props) {
 	return (
 		<>
 		<section className={ `${className} alignfull`} {...blockProps}>
-		{ props.attributes.enableTopCurve && <Curve /> }
+		{props.attributes.enableTopCurve && (
+					<Curve
+						height={props.attributes.topHeight}
+						width={props.attributes.topWidth}
+					/>
+				)}
 		</section>
 
 		<InspectorControls>
@@ -51,8 +56,35 @@ export default function Edit(props) {
 							enableTopCurve: isChecked,
 						});
 					}} checked={props.attributes.enableTopCurve} />
-					<span>{ __( 'Enable to curve ', metadata.textdomain ) }</span>
+					<span>{ __( 'Enable top curve ', metadata.textdomain ) }</span>
 				</div>
+				{props.attributes.enableTopCurve && 
+
+				<>
+				<HorizontalRule />
+				<RangeControl 
+				min={ 100 }
+				max={ 300 } 
+				value={ props.attributes.topWidth || 100 }
+				onChange={ (newValue)=> {
+					props.setAttributes({
+						topWidth: parseInt(newValue),
+					});
+				}}
+				label={ __( "width", metadata.textdomain ) } />
+				<RangeControl 
+				min={ 0 }
+				max={ 200 } 
+				value={ props.attributes.topHeight }
+				onChange={ (newValue)=> {
+					props.setAttributes({
+						topHeight: parseInt(newValue),
+					});
+				}}
+				label={ __( "height", metadata.textdomain ) } />
+
+				</>
+				}
 			</PanelBody>
 		</InspectorControls>
 
