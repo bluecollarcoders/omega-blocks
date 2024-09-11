@@ -42,6 +42,8 @@ export default function Edit(props) {
 		<section className={ `${className} alignfull`} {...blockProps}>
 		{props.attributes.enableTopCurve && (
 					<Curve
+						flipX={props.attributes.topFlipX}
+						flipY={props.attributes.topFlipY}
 						height={props.attributes.topHeight}
 						width={props.attributes.topWidth}
 					/>
@@ -82,6 +84,23 @@ export default function Edit(props) {
 					});
 				}}
 				label={ __( "height", metadata.textdomain ) } />
+				<HorizontalRule />
+				<div style={ { display: 'flex' } } >
+					<ToggleControl onChange={ (isChecked) => {
+						props.setAttributes({
+							topFlipX: isChecked,
+						});
+					}} checked={props.attributes.topFlipX} />
+					<span>{ __( 'Flip horizontally ', metadata.textdomain ) }</span>
+				</div>
+				<div style={ { display: 'flex' } } >
+					<ToggleControl onChange={ (isChecked) => {
+						props.setAttributes({
+							topFlipY: isChecked,
+						});
+					}} checked={props.attributes.topFlipY} />
+					<span>{ __( 'Flip vertically ', metadata.textdomain ) }</span>
+				</div>
 
 				</>
 				}

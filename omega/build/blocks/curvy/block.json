@@ -47,6 +47,14 @@
     "topHeight": {
       "type": "number",
       "default": 100
+    },
+    "topFlipX": {
+      "type": "boolean",
+      "default": false
+    },
+    "topFlipY": {
+      "type": "boolean",
+      "default": false
     }
   },
   "textdomain": "omega",
