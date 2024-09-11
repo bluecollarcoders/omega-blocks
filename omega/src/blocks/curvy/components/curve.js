@@ -22,7 +22,7 @@ export const Curve = (props) => {
             height: props.height, 
             width: `${props.width}%`}} 
             viewBox="0 0 1200 120">
-            <path style={{ fill: "white" }} d={props.flipY ? invertedPath : normalPath}></path>
+            <path style={{ fill: props.color || "white" }} d={props.flipY ? invertedPath : normalPath}></path>
         </svg>
     </div>
 };
