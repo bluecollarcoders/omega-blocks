@@ -223,6 +223,7 @@ function Edit(props) {
     setAttributes: props.setAttributes
   }))));
 }
+;
 
 /***/ }),
 
