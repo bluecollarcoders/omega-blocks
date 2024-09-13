@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 
 /**
@@ -33,6 +33,7 @@ import './editor.scss';
 import metadata from './block.json';
 import { Curve } from './components/curve';
 import { TopCurveSettings } from './components/topCurveSettings';
+import { BottomCurveSettings } from './components/bottomCurveSettings';
 
 export default function Edit(props) {
 	console.log( { props } );
@@ -50,6 +51,20 @@ export default function Edit(props) {
 						color={props.attributes.topColor}
 					/>
 				)}
+
+				<InnerBlocks />
+
+
+		{props.attributes.enableBottomCurve && (
+					<Curve
+						isBottom
+						flipX={props.attributes.bottomFlipX}
+						flipY={props.attributes.bottomFlipY}
+						height={props.attributes.bottomHeight}
+						width={props.attributes.bottomWidth}
+						color={props.attributes.bottomColor}
+					/>
+				)}
 		</section>
 
 		<InspectorControls>
@@ -65,6 +80,25 @@ export default function Edit(props) {
 				{props.attributes.enableTopCurve && (
 
 					<TopCurveSettings 
+					attributes={props.attributes} 
+					setAttributes={props.setAttributes}
+					/>
+
+				)}
+			</PanelBody>
+
+			<PanelBody title={ __( 'Bottom curve', metadata.textdomain ) }>
+				<div style={ { display: 'flex' } } >
+					<ToggleControl onChange={ (isChecked) => {
+						props.setAttributes({
+							enableBottomCurve: isChecked,
+						});
+					}} checked={props.attributes.enableBottomCurve} />
+					<span>{ __( 'Enable bottom curve ', metadata.textdomain ) }</span>
+				</div>
+				{props.attributes.enableBottomCurve && (
+
+					<BottomCurveSettings 
 					attributes={props.attributes} 
 					setAttributes={props.setAttributes}
 					/>
