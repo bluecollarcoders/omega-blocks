@@ -10,5 +10,22 @@
 .wp-block-omega-curvy {
   position: relative;
 }
+.wp-block-omega-curvy .curve {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.wp-block-omega-curvy .curve.top-curve {
+  top: 0;
+}
+.wp-block-omega-curvy .curve.bottom-curve {
+  bottom: 0;
+}
+.wp-block-omega-curvy .curve svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

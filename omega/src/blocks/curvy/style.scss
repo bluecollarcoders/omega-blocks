@@ -8,4 +8,25 @@
 .wp-block-omega-curvy {
     position: relative;
 
+	.curve {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+
+		&.top-curve {
+			top: 0;
+		}
+
+		&.bottom-curve {
+			bottom: 0;
+		}
+
+		svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
 }
