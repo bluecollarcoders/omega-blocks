@@ -13,18 +13,58 @@
  * @package CreateBlock
  */
 
+ namespace OmegaBlocks;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function create_block_omega_block_init() {
-	register_block_type( __DIR__ . '/build/blocks/curvy' );
+class Omega_Blocks {
+
+	/**
+    * Constructor to initialize hooks.
+    */
+	public function __construct() {
+		$this->setup_hooks();
+	}
+
+
+	/**
+    * Set up WordPress hooks.
+    */
+	public function setup_hooks() {
+		add_action( 'init', [ $this, 'register_blocks'] );
+		add_filter( 'block_categories_all', [ $this, 'create_custom_block_category' ] );
+	}
+
+	/**
+	 * Registers the block using the metadata loaded from the `block.json` file.
+	 * Behind the scenes, it registers also all assets so they can be enqueued
+	 * through the block editor in the corresponding context.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
+	 */
+	public function register_blocks() {
+		register_block_type( __DIR__ . '/build/blocks/curvy' );
+		register_block_type( __DIR__ . '/build/blocks/clickyGroup' );
+	}
+
+	public function create_custom_block_category( $categories ) {
+
+		array_unshift( $categories, [
+			'slug'  => 'omega blocks',
+			'title' => __( 'Omega Blocks', 'curvy' ),
+		]);
+
+		return $categories;
+
+	}
 }
-add_action( 'init', 'create_block_omega_block_init' );
+
+	// Initialize the class
+	function init_plugin() {
+		new Omega_Blocks();
+	}
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\init_plugin' );
+
