@@ -13,7 +13,7 @@
  * @package CreateBlock
  */
 
- namespace OmegaBlocks;
+namespace OmegaBlocks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -27,8 +27,7 @@ class Omega_Blocks {
 	public function __construct() {
 		$this->setup_hooks();
 	}
-
-
+	
 	/**
     * Set up WordPress hooks.
     */
@@ -47,6 +46,7 @@ class Omega_Blocks {
 	public function register_blocks() {
 		register_block_type( __DIR__ . '/build/blocks/curvy' );
 		register_block_type( __DIR__ . '/build/blocks/clickyGroup' );
+		register_block_type( __DIR__ . '/build/blocks/clickyButton' );
 	}
 
 	public function create_custom_block_category( $categories ) {
@@ -67,4 +67,3 @@ class Omega_Blocks {
 	}
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\init_plugin' );
-

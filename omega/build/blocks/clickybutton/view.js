@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
-/*!***********************************!*\
-  !*** ./src/blocks/clicky/view.js ***!
-  \***********************************/
+/*!*****************************************!*\
+  !*** ./src/blocks/clickybutton/view.js ***!
+  \*****************************************/
 /**
  * Use this file for JavaScript code that you want to run in the front-end 
  * on posts/pages that contain this block.
@@ -25,7 +25,7 @@
  */
 
 /* eslint-disable no-console */
-console.log("Hello World! (from create-block-clicky block)");
+console.log("Hello World! (from create-block-clickybutton block)");
 /* eslint-enable no-console */
 /******/ })()
 ;

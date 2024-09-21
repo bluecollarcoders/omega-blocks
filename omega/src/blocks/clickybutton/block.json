@@ -1,19 +1,20 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "omega/clickygroup",
+	"name": "omega/clickybutton",
 	"version": "0.1.0",
-	"title": "Clicky Group",
+	"title": "Clicky Button",
 	"category": "omega blocks",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "A call to action button that links to a particular post or page",
 	"example": {},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "clickygroup",
+	"textdomain": "clickybutton",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"render": "file:./render.php"
+	"render": "file:./render.php",
+	"parent": ["omega/clickygroup"]
 }
