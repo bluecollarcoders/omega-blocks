@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps, BlockControls, JustifyContentControl, } from '@wordpress/block-editor';
+import { parseValue } from '../../utils/parseValue';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,15 +30,34 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	console.log({ props });
 
-	const blockProps = useBlockProps();
+	const blockGap = parseValue(props.attributes.style?.spacing?.blockGap || "");
+	const blockProps = useBlockProps({
+		style: { gap: blockGap, justifyContent: props.attributes.justifyContent }
+	});
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		template: [["omega/clickybutton", {}]],
 		allowedBlocks: [ "omega/clickybutton" ]
 	} );
 
 	return (
+		<>
+		<BlockControls>
+			<JustifyContentControl
+				value={props.attributes.justifyContent}
+				allowedControls={["left", "center", "right"]}
+				onChange={(newValue) => {
+					props.setAttributes({
+						justifyContent: newValue,
+					})
+				}}
+			 />
+		</BlockControls>
 		<div {...innerBlocksProps} />
+		</>
+		
 	);
 }
+ 

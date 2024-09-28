@@ -6,10 +6,20 @@
 	"title": "Clicky Group",
 	"category": "omega blocks",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "A group of Clicky buttons that link to a particular post of page rather than hardcoding the destination URL.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"blockGap": true
+		}
+	},
+	"attributes": {
+		"justifyContent":{
+			"type":"string",
+			"enum": ["left", "center", "right"],
+			"default": "left"
+		}
 	},
 	"textdomain": "clickygroup",
 	"editorScript": "file:./index.js",
