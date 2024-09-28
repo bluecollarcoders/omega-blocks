@@ -62,69 +62,66 @@ export default function Edit(props) {
 	return (
 
 		<>
-
-		<InspectorControls>
-			<PanelBody>
-			<SelectControl
-			label="Type"
-			value={props.attributes.postTypes}
-			onChange={(newValue) => {
-				props.setAttributes({
-					postType: newValue,
-				});
-			}}
-			options={[
-				{
-					label: "Select a post type...",
-					value: "",
-				},
-				...(postTypes || []).map((postType) => ({
-					label: postType.labels.singular_name,
-					value: postType.slug,
-				})),
-			]}
-			 />
-			</PanelBody>
-		</InspectorControls>
-		<div {...blockProps}>
-			<RichText
-			placeholder='Label Text'
-			value={props.attributes.labelText}
-			allowedFormats={[]}
-			multiline={false}
-			onSplit={ () => {}}
-			onReplace={ () => {}}
-			onChange={ (newValue) => {
-				props.setAttributes({
-					labelText: newValue,
-				})
-			}} 
-			/>
-			{!!props.attributes.postType && (
-				<SelectControl
-				label={`Linked ${props.attributes.postType}`}
-				value={props.attributes.linkedPost}
-				onChange={(newValue) => {
-					props.setAttributes({
-						linkedPost: newValue ? parseInt(newValue) : null,
-					});
-				}}
-				options={[
-					{
-						label: `Select a ${props.attributes.postType} to link to`,
-						value: "",
-					},
-					...(posts || []).map((post) => ({
-						label: post.title.rendered,
-						value: post.id,
-					})),
-				]}
-
-				 />
-			)}
-		</div>
-
-		
+			<InspectorControls>
+				<PanelBody title="Destination">
+					<SelectControl
+						label="Type"
+						value={props.attributes.postType}
+						onChange={(newValue) => {
+							props.setAttributes({
+								postType: newValue,
+							});
+						}}
+						options={[
+							{
+								label: "Select a post type...",
+								value: "",
+							},
+							...(postTypes || []).map((postType) => ({
+								label: postType.labels.singular_name,
+								value: postType.slug,
+							})),
+						]}
+					/>
+					{!!props.attributes.postType && (
+						<SelectControl
+							label={`Linked ${props.attributes.postType}`}
+							value={props.attributes.linkedPost}
+							onChange={(newValue) => {
+								props.setAttributes({
+									linkedPost: newValue ? parseInt(newValue) : null,
+								});
+							}}
+							options={[
+								{
+									label: `Select a ${props.attributes.postType} to link to`,
+									value: "",
+								},
+								...(posts || []).map((post) => ({
+									label: post.title.rendered,
+									value: post.id,
+								})),
+							]}
+						/>
+					)}
+				</PanelBody>
+			</InspectorControls>
+			<div {...blockProps}>
+				<RichText
+					placeholder="Label text"
+					value={props.attributes.labelText}
+					allowedFormats={[]}
+					multiline={false}
+					onSplit={() => {}}
+					onReplace={() => {}}
+					onChange={(newValue) => {
+						props.setAttributes({
+							labelText: newValue,
+						});
+					}}
+				/>
+			</div>
 		</>
+
 	);
 }

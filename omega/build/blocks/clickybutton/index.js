@@ -117,9 +117,11 @@ function Edit(props) {
     posts
   });
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: "Destination"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: "Type",
-    value: props.attributes.postTypes,
+    value: props.attributes.postType,
     onChange: newValue => {
       props.setAttributes({
         postType: newValue
@@ -132,20 +134,6 @@ function Edit(props) {
       label: postType.labels.singular_name,
       value: postType.slug
     }))]
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    placeholder: "Label Text",
-    value: props.attributes.labelText,
-    allowedFormats: [],
-    multiline: false,
-    onSplit: () => {},
-    onReplace: () => {},
-    onChange: newValue => {
-      props.setAttributes({
-        labelText: newValue
-      });
-    }
   }), !!props.attributes.postType && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: `Linked ${props.attributes.postType}`,
     value: props.attributes.linkedPost,
@@ -161,6 +149,20 @@ function Edit(props) {
       label: post.title.rendered,
       value: post.id
     }))]
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...blockProps
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    placeholder: "Label text",
+    value: props.attributes.labelText,
+    allowedFormats: [],
+    multiline: false,
+    onSplit: () => {},
+    onReplace: () => {},
+    onChange: newValue => {
+      props.setAttributes({
+        labelText: newValue
+      });
+    }
   })));
 }
 
