@@ -1,8 +1,8 @@
 {
-	"name": "omega-blocks",
+	"name": "service-block",
 	"version": "0.1.0",
-	"description": "A package of useful custom Gutenberg blocks, including shape dividers and dynamic buttons.",
-	"author": "Sewnful Digital Studios",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
@@ -15,6 +15,6 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.9.0"
+		"@wordpress/scripts": "^30.1.0"
 	}
 }

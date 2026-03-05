@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/service-block",
+	"version": "0.1.0",
+	"title": "Service Block",
+	"category": "design",
+	"icon": "format-image",
+	"description": "This block is a card block to query services and other post types",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": "#0073aa"
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": "#ffffff"
+		},
+		"postType": {
+			"type": "string",
+			"default": ""
+		},
+		"selectPostId": {
+			"type": "number",
+			"default": 0
+		},
+		"serviceTitle": {
+			"type": "string",
+			"source": "meta",
+			"meta": "service_title"
+		},
+		"serviceDescription": {
+			"type": "string",
+			"source": "meta",
+			"meta": "service_description"
+		},
+		"testimonialAuthor": {
+			"type": "string",
+			"source": "meta",
+			"meta": "testimonial_author"
+		},
+		"testimonialContent": {
+			"type": "string",
+			"source": "meta",
+			"meta": "testimonial_content"
+		},
+		"featureImageId": {
+			"type": "number",
+			"source": "attribute",
+			"attribute": "feature_media",
+			"selector": "img"
+		}
+	},
+	"textdomain": "service-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
